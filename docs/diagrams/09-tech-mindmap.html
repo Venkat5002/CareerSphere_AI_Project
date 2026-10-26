@@ -1,0 +1,268 @@
+<title>CareerSphere Project Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: a two-sided mind map (project in the middle, twelve areas, each feature or technology as a leaf), a detail line under it, then the full reference grouped by area. Colour marks the layer: features, client, server, intelligence, delivery. */
+:root {
+  --paper: #eef1ee; --sheet: #f8faf8; --ink: #15264a; --ink-2: #47546e; --ink-3: #8b94a6; --rule: #d3d9d4;
+  --saffron: #e5a019; --saffron-soft: #f6e4bd;
+  --feature: #b4442e; --client: #2f6fb3; --server: #15264a; --intel: #c2830c; --delivery: #2e8059;
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0f1626; --sheet: #172036; --ink: #e6eaf3; --ink-2: #b3bccd; --ink-3: #7a859c; --rule: #2a3550;
+  --saffron: #f0b43c; --saffron-soft: #3b3014; --feature: #f08a70; --client: #6fa8e8; --server: #c9d3ea; --intel: #f0b43c; --delivery: #5fcf95; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #0f1626; --sheet: #172036; --ink: #e6eaf3; --ink-2: #b3bccd; --ink-3: #7a859c; --rule: #2a3550;
+  --saffron: #f0b43c; --saffron-soft: #3b3014; --feature: #f08a70; --client: #6fa8e8; --server: #c9d3ea; --intel: #f0b43c; --delivery: #5fcf95; color-scheme: dark }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 1360px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 22px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 750; }
+h2 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font: 600 .72rem/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.lead { max-width: 70ch; color: var(--ink-2); }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: .88rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+
+.mapbox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 16px; overflow-x: auto; }
+svg { display: block; width: 100%; min-width: 1100px; height: auto; }
+svg text { font-family: var(--body); fill: var(--ink); }
+.link { fill: none; stroke-width: 1.6; opacity: .55; }
+.leaf { cursor: pointer; }
+.leaf rect { fill: transparent; }
+.leaf:hover rect, .leaf:focus rect, .leaf.on rect { fill: var(--saffron-soft); }
+.leaf:focus { outline: none; }
+.leaf text { font-size: 13px; }
+.branch text { font-family: var(--display); font-weight: 700; font-size: 15px; }
+.hub text { font-family: var(--display); font-weight: 800; }
+
+.detail { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; align-items: baseline; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 20px; min-height: 96px; }
+.detail .name { font-family: var(--display); font-weight: 700; font-size: 1.15rem; grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.detail dt { color: var(--ink-3); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+.detail dd { margin: 0; min-width: 0; }
+code, .path { font-family: var(--mono); font-size: .82rem; color: var(--ink-2); word-break: break-word; }
+.tag { font: 600 .7rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; border: 1px solid currentColor; }
+
+.ref { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 16px; }
+.area { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.area h3 { font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
+.area ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.area li { display: grid; gap: 1px; min-width: 0; }
+.area li b { font-weight: 650; }
+.area li span { color: var(--ink-2); font-size: .9rem; }
+.flow { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 20px; display: grid; gap: 10px; }
+.flow ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 80ch; }
+@media (max-width: 760px) { .mapbox, .detail { display: none; } }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <span class="eyebrow">CareerSphere AI · final-year project · V. Venkata Rupin, E. Manideep Reddy, J. Pruthvi Sai, S. Jaffer Ali</span>
+    <h1>CareerSphere Project Map</h1>
+    <p class="lead">Everything in the project: what each user can do, the ideas that make it new, and every technology behind it, with where it lives in the code. Click any leaf on the map to read about it; the full list is below the map.</p>
+    <div class="legend" aria-label="Colour key">
+      <span><i class="dot" style="background:var(--feature)"></i>Features: what each user can do</span>
+      <span><i class="dot" style="background:var(--client)"></i>Client: what people see and run</span>
+      <span><i class="dot" style="background:var(--server)"></i>Server: API, security, data</span>
+      <span><i class="dot" style="background:var(--intel)"></i>Intelligence: AI and the rules</span>
+      <span><i class="dot" style="background:var(--delivery)"></i>Delivery: testing, deploying, documenting</span>
+    </div>
+  </header>
+
+  <div class="mapbox"><svg id="map" viewBox="0 0 1320 900" role="img" aria-label="Mind map of CareerSphere's technologies"></svg></div>
+  <div class="detail" id="detail" aria-live="polite"></div>
+
+  <section class="flow">
+    <h2>How a request travels</h2>
+    <ol>
+      <li>A student taps <b>Learn Spring Boot</b> on the Career Map, in a browser or in the Xcode or Android app.</li>
+      <li><b>React</b> calls <code>/api/student/what-if</code> through <b>Axios</b>, with the login <b>JWT</b> attached.</li>
+      <li><b>Vite</b> (in development) or the single <b>Docker</b> image (online) passes it to <b>Spring Boot</b>.</li>
+      <li><b>Spring Security</b> checks the token and the STUDENT role; the controller calls <b>MatchService</b>.</li>
+      <li><b>Hibernate</b> loads the profile and open jobs from <b>MySQL</b>; the weighted score is recomputed for every job.</li>
+      <li>The answer returns as JSON, and the jobs that cross 70% slide inside the ring on the <b>SVG</b> map.</li>
+    </ol>
+  </section>
+
+  <section style="display:grid;gap:14px">
+    <h2>Full reference</h2>
+    <div class="ref" id="ref"></div>
+  </section>
+</div>
+
+<script>
+// [area, layer, side, items: [name, what it does, where]]
+const AREAS = [
+  ['Student features', 'feature', 'L', [
+    ['Career Map', 'Every open job as a dot on rings by match score; skill levers move the dots live (what-if).', 'pages/student/CareerMap.jsx'],
+    ['Placement profile', 'Guided steps: résumé, consent, assessment, intro video; a résumé score out of 100.', 'pages/student/PlacementProfile.jsx'],
+    ['Skill assessments', '8 timed questions per skill, graded on the server; the result sets a verified level.', 'pages/student/Assessments.jsx'],
+    ['Certifications', 'Upload a certificate; the placement cell verifies it and the skill is marked verified.', 'pages/student/Certifications.jsx'],
+    ['Best next skill', 'Which one skill or level-up brings the most open jobs within reach.', 'pages/student/Opportunities.jsx'],
+    ['Skill roadmap (new)', 'Best 1-, 2- and 3-step learning plans found by exact search, and the cheapest path to each nearby job.', 'pages/student/Roadmap.jsx'],
+    ['Jobs, applying, invitations', 'Explained match on every job, apply with one click, and invitations from recruiters.', 'pages/student/StudentJobs.jsx'],
+    ['Leaderboard and Copilot', 'Readiness points ranking, and an AI assistant that answers from the student’s own data.', 'Leaderboard.jsx, components/Copilot.jsx'],
+  ]],
+  ['Web app', 'client', 'L', [
+    ['React 18', 'Builds every screen from components: dashboards, Career Map, job pages, Copilot panel.', 'frontend/src/pages, frontend/src/components'],
+    ['Vite 5', 'Development server with instant reload; builds the production bundle; passes /api calls to the backend.', 'frontend/vite.config.js'],
+    ['React Router 6', 'Page addresses like /student/jobs/3 and role-protected routes.', 'frontend/src/App.jsx'],
+    ['Axios', 'One HTTP client for all API calls; adds the JWT and turns errors into plain sentences.', 'frontend/src/services/api.js'],
+    ['SVG + CSS', 'Draws the Career Map rings and animates jobs as skill levers change; design tokens for colours.', 'pages/student/CareerMap.jsx, styles.css'],
+  ]],
+  ['Apps & editors', 'client', 'L', [
+    ['Xcode + SwiftUI', 'Native Mac and iPhone app; WKWebView shows the web app; the build step starts the servers.', 'app/CareerSphere, CareerSphere.xcodeproj'],
+    ['Android Studio + Kotlin', 'Android app: WebView with file upload, resume viewer, pull to refresh, server address setting.', 'android/'],
+    ['VS Code', 'Tasks to start, test and stop; Java and Chrome debugging with breakpoints.', '.vscode/'],
+    ['Terminal scripts', 'run.sh starts MySQL, backend and web app in their own windows; stop.sh stops them.', 'run.sh, stop.sh, scripts/'],
+  ]],
+  ['AI', 'intel', 'L', [
+    ['Google Gemini', 'Language model behind the Copilot and the resume skill finder (gemini-flash-latest, lite fallback).', 'ai/GeminiClient.java'],
+    ['Function calling', 'The Copilot asks for the student’s own data through 8 tools, so answers cite real numbers.', 'ai/CopilotTools.java, ai/CopilotService.java'],
+    ['Offline mode', 'Rule-based answers when there is no key or Gemini is busy, so the demo never breaks.', 'ai/CopilotService.java'],
+    ['PDFBox + Apache POI', 'Read text out of PDF and Word resumes.', 'ai/ResumeTextExtractor.java'],
+    ['Evidence check', 'Drops any AI skill suggestion whose quoted line isn’t really in the resume.', 'ai/ResumeSkillService.java'],
+  ]],
+  ['Testing & evaluation', 'delivery', 'L', [
+    ['JUnit 5', '39 unit tests: matching, skill levels, Opportunity Math, roadmap, Hidden Talent, Workshop Planner, placement profile, resume finder.', 'backend/src/test/.../service'],
+    ['MockMvc + H2', '17 API tests (TC-01 to TC-17) start the whole app on an in-memory database.', 'ApiIntegrationTest.java'],
+    ['Fit Review', 'Blind Y/N labelling by three people; Fleiss’ kappa, F1 and McNemar test vs keyword matching.', 'Fit Review page, docs/evaluation'],
+  ]],
+  ['Documents', 'delivery', 'L', [
+    ['Mermaid diagrams', 'Architecture, ER, use case, sequence and workshop-algorithm diagrams.', 'docs/diagrams'],
+    ['Docs, Slides, paper', 'Project documentation, the review deck and the IEEE-format research paper.', 'Claude artifacts, paper .docx'],
+  ]],
+  ['Recruiter & placement cell', 'feature', 'R', [
+    ['Post jobs with levels', 'Each skill has a minimum level and is must-have or nice-to-have.', 'pages/recruiter/JobForm.jsx'],
+    ['Ranked applicants', 'Applicants sorted by match, with verified skills, certificates, résumé and intro video.', 'pages/recruiter/Applicants.jsx'],
+    ['Hidden Talent (new)', 'Consented students who never applied but fit, or are one step away; invite them in one click.', 'service/TalentService.java'],
+    ['Verify certificates', 'The placement cell approves or rejects uploads with a note.', 'pages/admin/CertificateReview.jsx'],
+    ['Plan workshops', 'Picks the k workshops that bring the most students within reach of a job.', 'pages/admin/WorkshopPlanner.jsx'],
+    ['Batch analytics', 'Placement numbers, skill gaps across the batch and the batch leaderboard.', 'pages/admin/'],
+  ]],
+  ['Backend', 'server', 'R', [
+    ['Java 17', 'The language of the whole server.', 'backend/src/main/java'],
+    ['Spring Boot 3.3', 'Runs the server with sensible defaults; one command starts it.', 'CareerSphereApplication.java'],
+    ['Spring Web (REST)', 'Controllers that answer /api/auth, /api/student, /api/recruiter, /api/admin.', 'controller/'],
+    ['Bean Validation', 'Checks every form on the server (CGPA 0-10, required fields) and returns field errors.', 'dto/*Dtos.java'],
+    ['Maven', 'Downloads libraries, compiles, runs the tests, builds the jar.', 'backend/pom.xml'],
+  ]],
+  ['Security', 'server', 'R', [
+    ['Spring Security', 'Every request passes a filter chain; each role can only reach its own APIs.', 'config/SecurityConfig.java'],
+    ['JWT (jjwt)', 'Signed login token, 8 hours, carries the user id and role.', 'security/JwtService.java'],
+    ['BCrypt', 'Passwords are stored only as salted hashes.', 'SecurityConfig.passwordEncoder'],
+    ['Upload checks', 'Résumés, certificates and videos: type, size limit, file signature and random file names.', 'service/ResumeService.java'],
+  ]],
+  ['Data', 'server', 'R', [
+    ['MySQL 8', 'Stores users, profiles, skill levels, jobs, applications, résumés, certificates, assessment attempts, invitations.', 'application.properties'],
+    ['Hibernate / JPA', 'Maps Java entities to tables and creates or updates them automatically.', 'entity/, repository/'],
+    ['H2', 'In-memory database used only by the tests.', 'application-h2.properties'],
+    ['Demo seeder', '35 students, 12 jobs, 22 skills, 3 demo logins on an empty database.', 'config/DataSeeder.java'],
+  ]],
+  ['Rules & algorithms', 'intel', 'R', [
+    ['Weighted match score', 'Must-have 2, nice-to-have 1, half credit below the level asked; CGPA checked separately.', 'service/MatchService.java'],
+    ['Opportunity Math', 'For each skill or level-up, re-scores all open jobs and counts jobs that newly reach 70%.', 'MatchService.opportunities'],
+    ['What-if simulator', 'Same calculation for any mix of skills; drives the Career Map levers.', 'DashboardService.whatIf'],
+    ['Roadmap search', 'Checks every bundle of up to 3 steps (about 1,000 per student) and flags skills that only pay off together.', 'service/RoadmapService.java'],
+    ['Reverse matching', 'Scores a job against every consented student, not the other way round, to find hidden talent.', 'service/TalentService.java'],
+    ['Workshop Planner', 'Exact search over every combination of k workshops with bitmasks; greedy shown for comparison.', 'service/WorkshopService.java'],
+    ['Next Best Action', 'Priority rules: profile, resume, consent, skills, apply, learn.', 'DashboardService.nextBestAction'],
+    ['Assessment grading', 'Shuffled options, server-side answers, 8 of 8 Advanced, 6 Intermediate, 4 Beginner.', 'service/AssessmentService.java'],
+  ]],
+  ['Going online', 'delivery', 'L', [
+    ['Docker', 'One image: builds the web app and puts it inside the backend jar.', 'Dockerfile'],
+    ['Docker Compose', 'Runs the app with its own MySQL on any computer.', 'docker-compose.yml'],
+    ['Railway', 'Hosts the image and a MySQL database from GitHub, with a public https address.', 'deploy/DEPLOY.md'],
+    ['GitHub', 'Keeps the code; every push redeploys.', '.gitignore'],
+  ]],
+];
+const HUB = ['CareerSphere AI', 'A campus placement platform: students, recruiters and the placement cell, with explainable matching, verified skill levels, Opportunity Math, a Skill Roadmap, Hidden Talent, a Workshop Planner and an AI Copilot.', 'careersphere/ (one project, runs on Terminal, Xcode, VS Code, Android Studio)'];
+const LAYER = { feature: 'Feature', client: 'Client', server: 'Server', intel: 'Intelligence', delivery: 'Delivery' };
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+
+// ---------- layout ----------
+const W = 1320, CX = W / 2, ROW = 27, GAP = 22, TOP = 30;
+const side = (s) => AREAS.filter((a) => a[2] === s);
+const height = (list) => list.reduce((h, a) => h + a[3].length * ROW, 0) + GAP * (list.length - 1);
+const H = Math.max(height(side('L')), height(side('R'))) + TOP * 2;
+const svg = document.getElementById('map');
+svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+const CY = H / 2;
+const links = el('g', {}, svg), nodes = el('g', {}, svg);
+const leafEls = [];
+
+['L', 'R'].forEach((s) => {
+  const list = side(s), dir = s === 'L' ? -1 : 1;
+  let y = (H - height(list)) / 2 + ROW / 2;
+  list.forEach((a) => {
+    const color = `var(--${a[1]})`;
+    const ys = a[3].map((_, i) => y + i * ROW);
+    const by = (ys[0] + ys[ys.length - 1]) / 2;
+    const bx = CX + dir * 255, lx = CX + dir * 425;
+    el('path', { d: `M${CX + dir * 92},${CY} C${CX + dir * 170},${CY} ${bx - dir * 110},${by} ${bx - dir * 100},${by}`, class: 'link', stroke: color }, links);
+    const g = el('g', { class: 'branch' }, nodes);
+    el('rect', { x: bx - 100, y: by - 17, width: 200, height: 34, rx: 17, fill: 'var(--sheet)', stroke: color, 'stroke-width': 2 }, g);
+    const t = el('text', { x: bx, y: by + 5, 'text-anchor': 'middle' }, g); t.textContent = a[0];
+    a[3].forEach((it, i) => {
+      const ly = ys[i];
+      el('path', { d: `M${bx + dir * 100},${by} C${bx + dir * 124},${by} ${lx - dir * 60},${ly} ${lx - dir * 10},${ly}`, class: 'link', stroke: color }, links);
+      const lg = el('g', { class: 'leaf', tabindex: 0, role: 'button', 'aria-label': `${it[0]}: ${it[1]}` }, nodes);
+      const r = el('rect', { y: ly - 11, height: 22, rx: 6 }, lg);
+      el('circle', { cx: lx, cy: ly, r: 4, fill: color }, lg);
+      const lt = el('text', { x: lx + dir * 10, y: ly + 4.5, 'text-anchor': s === 'L' ? 'end' : 'start' }, lg); lt.textContent = it[0];
+      requestAnimationFrame(() => { const w = lt.getComputedTextLength() + 24; r.setAttribute('width', w); r.setAttribute('x', s === 'L' ? lx - w + 6 : lx - 6); });
+      const pick = () => select(a, it, lg);
+      lg.addEventListener('click', pick);
+      lg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+      leafEls.push(lg);
+    });
+    y += a[3].length * ROW + GAP;
+  });
+});
+const hub = el('g', { class: 'hub', tabindex: 0, role: 'button', style: 'cursor:pointer' }, nodes);
+el('circle', { cx: CX, cy: CY, r: 92, fill: 'var(--ink)' }, hub);
+el('circle', { cx: CX, cy: CY, r: 98, fill: 'none', stroke: 'var(--saffron)', 'stroke-width': 2, 'stroke-dasharray': '4 6' }, hub);
+[['CareerSphere', -4, 22], ['AI', 22, 20]].forEach(([t, dy, size]) => { const x = el('text', { x: CX, y: CY + dy, 'text-anchor': 'middle', style: `fill:var(--paper);font-size:${size}px` }, hub); x.textContent = t; });
+hub.addEventListener('click', () => select(null, HUB, null));
+
+// ---------- detail ----------
+const detail = document.getElementById('detail');
+function select(area, it, g) {
+  leafEls.forEach((x) => x.classList.toggle('on', x === g));
+  detail.replaceChildren();
+  const name = document.createElement('div'); name.className = 'name'; name.textContent = it[0];
+  if (area) { const tag = document.createElement('span'); tag.className = 'tag'; tag.style.color = `var(--${area[1]})`; tag.textContent = `${area[0]} · ${LAYER[area[1]]}`; name.appendChild(tag); }
+  const row = (k, v, cls) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; if (cls) dd.className = cls; detail.append(dt, dd); };
+  detail.appendChild(name);
+  row('What it does', it[1]);
+  row('Where', it[2], 'path');
+}
+select(null, HUB, null);
+
+// ---------- reference ----------
+const ref = document.getElementById('ref');
+AREAS.forEach((a) => {
+  const box = document.createElement('article'); box.className = 'area';
+  const h = document.createElement('h3'); const d = document.createElement('i'); d.className = 'dot'; d.style.background = `var(--${a[1]})`; h.append(d, a[0]);
+  const ul = document.createElement('ul');
+  a[3].forEach((it) => {
+    const li = document.createElement('li');
+    const b = document.createElement('b'); b.textContent = it[0];
+    const s = document.createElement('span'); s.textContent = it[1];
+    const p = document.createElement('code'); p.textContent = it[2];
+    li.append(b, s, p); ul.appendChild(li);
+  });
+  box.append(h, ul); ref.appendChild(box);
+});
+</script>

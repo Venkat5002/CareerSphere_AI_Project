@@ -1,0 +1,48 @@
+{
+  // Terminal > Run Task... (or Cmd+Shift+P > "Tasks: Run Task").
+  // "CareerSphere: start everything" is the default build task: Cmd+Shift+B.
+  // Tasks run in a login zsh, so your Gemini key from ~/.zshrc is picked up.
+  "version": "2.0.0",
+  "options": {
+    "shell": { "executable": "/bin/zsh", "args": ["-l", "-i", "-c"] }
+  },
+  "tasks": [
+    {
+      "label": "CareerSphere: start everything",
+      "dependsOn": ["Backend (Spring Boot, port 8080)", "Frontend (Vite, port 5173)"],
+      "dependsOrder": "parallel",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Backend (Spring Boot, port 8080)",
+      "type": "shell",
+      "command": "brew services start mysql >/dev/null 2>&1; mvn spring-boot:run",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "presentation": { "panel": "dedicated", "group": "servers" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend (Vite, port 5173)",
+      "type": "shell",
+      "command": "[ -d node_modules ] || npm install; npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "presentation": { "panel": "dedicated", "group": "servers" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run backend tests",
+      "type": "shell",
+      "command": "mvn test",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop servers",
+      "type": "shell",
+      "command": "./stop.sh",
+      "problemMatcher": []
+    }
+  ]
+}

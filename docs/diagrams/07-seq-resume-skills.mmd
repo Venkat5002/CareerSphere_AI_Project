@@ -1,0 +1,22 @@
+sequenceDiagram
+  autonumber
+  actor S as Student
+  participant FE as Profile page
+  participant RS as ResumeSkillService
+  participant X as ResumeTextExtractor
+  participant G as Gemini API
+  S->>FE: Upload resume
+  FE->>RS: POST /api/student/resume/skills
+  RS->>X: read text (PDFBox for PDF, Apache POI for DOC/DOCX)
+  X-->>RS: plain text
+  alt Gemini key set
+    RS->>G: skill catalog + resume text, answer as JSON
+    G-->>RS: [{name, evidence quote}, ...]
+    RS->>RS: keep only suggestions whose quote is really in the resume
+  else offline
+    RS->>RS: keyword patterns (springboot, spring-boot, RESTful ...)
+  end
+  RS-->>FE: suggestions with evidence (nothing saved yet)
+  S->>FE: Untick any, click "Add skills"
+  FE->>RS: POST /api/student/profile/skills
+  FE-->>S: Career Map recalculated

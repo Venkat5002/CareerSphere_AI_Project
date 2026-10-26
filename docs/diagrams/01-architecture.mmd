@@ -1,0 +1,26 @@
+flowchart TB
+  subgraph Clients["Clients"]
+    WEB["Browser: React 18 + Vite<br/>Career Map, Roadmap, Jobs, Placement profile,<br/>Applicants, Hidden Talent, Workshop Planner, Copilot"]
+    APPS["Mac / iPhone app (SwiftUI WKWebView)<br/>Android app (Kotlin WebView)"]
+  end
+  subgraph Server["Spring Boot 3 backend (Java 17)"]
+    SEC["Spring Security<br/>JWT filter + role rules"]
+    CTRL["REST controllers<br/>/api/auth, /api/student, /api/recruiter, /api/admin"]
+    BIZ["Services<br/>Profile, Resume, Job, Application, Dashboard,<br/>Readiness, Assessment, Certificate"]
+    RULES["Rule engine<br/>MatchService: score + Opportunity Math<br/>RoadmapService: exact bundle search<br/>TalentService: reverse matching<br/>WorkshopService: exact batch planning"]
+    AI["AI layer<br/>CopilotService (8 read-only tools),<br/>ResumeSkillService (evidence check), GeminiClient"]
+    REPO["Spring Data JPA repositories"]
+    SEC --> CTRL --> BIZ
+    BIZ --> RULES
+    CTRL --> AI
+    AI --> BIZ
+    BIZ --> REPO
+  end
+  DB[("MySQL 8<br/>users, profiles, skill levels, jobs,<br/>applications, certificates, attempts, invitations")]
+  FILES[("Files on disk, UUID names<br/>résumés, certificates, videos")]
+  GEM["Google Gemini API<br/>function calling + JSON output"]
+  WEB -- "HTTPS JSON + Bearer token" --> SEC
+  APPS -- "same web app" --> WEB
+  REPO --> DB
+  BIZ --> FILES
+  AI -- "server-side API key<br/>(never sent to the browser)" --> GEM

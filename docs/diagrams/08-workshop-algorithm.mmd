@@ -1,0 +1,11 @@
+flowchart TD
+  A["Start: open jobs, all students,<br/>goal (Reach or Matches), k workshops"] --> B["Candidates = every skill some open job requires<br/>Encode students and jobs as bit masks"]
+  B --> C{"Combinations C(n, k)<br/>small enough?"}
+  C -- No --> G["Fallback: pick one workshop at a time<br/>(greedy) and say so"]
+  C -- Yes --> D["For every set S of k candidate skills:<br/>give each student S, re-score every open job<br/>(same 70% + CGPA rule as the Career Map)"]
+  D --> E["Keep the best S for the goal<br/>Reach: students with 1+ job, then matches<br/>Matches: total matches, then students"]
+  E --> F["Per student: smallest subset of S that gives<br/>the same result = their invite list<br/>Drop workshops nobody needs"]
+  F --> H["Order workshops by immediate effect,<br/>record before/after totals per step"]
+  H --> I["Also run one-at-a-time greedy<br/>for comparison"]
+  I --> K["Return plan, invite lists,<br/>totals, combinations checked"]
+  G --> K

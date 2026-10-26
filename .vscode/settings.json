@@ -1,0 +1,12 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.exclusions": ["**/node_modules/**", "**/android/**"],
+  "files.exclude": {
+    "**/node_modules": true,
+    "backend/target": true,
+    "android/.gradle": true,
+    "android/build": true,
+    "android/app/build": true
+  },
+  "search.exclude": { "**/node_modules": true, "**/dist": true }
+}

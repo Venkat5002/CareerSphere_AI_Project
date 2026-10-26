@@ -1,0 +1,21 @@
+sequenceDiagram
+  autonumber
+  actor S as Student
+  participant FE as Copilot panel
+  participant CS as CopilotService
+  participant G as Gemini API
+  participant T as CopilotTools
+  participant DB as MySQL
+  S->>FE: "Which skill should I learn next?"
+  FE->>CS: POST /api/student/copilot (last 10 messages)
+  CS->>G: system rules + conversation + 8 tool declarations
+  G-->>CS: functionCall get_skill_opportunities
+  CS->>T: run tool for THIS student (id from JWT)
+  T->>DB: profile, open jobs
+  T-->>CS: ranking: Spring Boot +4 jobs ...
+  CS->>G: model turn (unchanged) + functionResponse
+  G-->>CS: answer text (may call more tools first, max 5 rounds)
+  CS-->>FE: reply + action buttons + "Based on Opportunity Math"
+  FE-->>S: "Learn Spring Boot first..." [Show on my map]
+  Note over CS,G: No API key, quota used up or an error?<br/>Offline mode answers with the same tools and rules
+  Note over S,FE: Apply and other actions<br/>happen only when the student clicks

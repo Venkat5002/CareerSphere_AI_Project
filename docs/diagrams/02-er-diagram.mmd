@@ -1,0 +1,92 @@
+erDiagram
+  USERS ||--o| STUDENT_PROFILES : "has (students)"
+  USERS ||--o| RECRUITER_PROFILES : "has (recruiters)"
+  USERS ||--o| RESUMES : uploads
+  USERS ||--o{ JOBS : "posts (recruiters)"
+  USERS ||--o{ APPLICATIONS : "submits (students)"
+  USERS ||--o{ CERTIFICATES : "uploads (students)"
+  USERS ||--o{ ASSESSMENT_ATTEMPTS : "takes (students)"
+  USERS ||--o{ INVITATIONS : "receives (students)"
+  JOBS ||--o{ APPLICATIONS : receives
+  JOBS ||--o{ INVITATIONS : "sends (Hidden Talent)"
+  STUDENT_PROFILES }o--o{ SKILLS : "student_skills (level 1-3, verified level)"
+  JOBS }o--o{ SKILLS : "job_skills (min level, must-have or nice)"
+  SKILLS ||--o{ CERTIFICATES : proves
+  SKILLS ||--o{ ASSESSMENT_ATTEMPTS : tests
+
+  USERS {
+    bigint id PK
+    varchar full_name
+    varchar email UK
+    varchar password_hash "BCrypt"
+    varchar role "STUDENT, RECRUITER, ADMIN"
+  }
+  STUDENT_PROFILES {
+    bigint id PK
+    bigint user_id FK, UK
+    varchar branch
+    double cgpa
+    varchar headline
+    boolean placement_consent
+    varchar video_file "intro video"
+    varchar github_url
+  }
+  RECRUITER_PROFILES {
+    bigint id PK
+    bigint user_id FK, UK
+    varchar company_name
+    varchar designation
+  }
+  SKILLS {
+    bigint id PK
+    varchar name UK
+    varchar category
+  }
+  JOBS {
+    bigint id PK
+    bigint recruiter_id FK
+    varchar title
+    double min_cgpa
+    date deadline
+    varchar status "OPEN, CLOSED"
+  }
+  APPLICATIONS {
+    bigint id PK
+    bigint job_id FK
+    bigint student_id FK
+    varchar status "APPLIED to SELECTED or REJECTED"
+    datetime applied_at
+  }
+  RESUMES {
+    bigint id PK
+    bigint student_id FK, UK
+    varchar stored_file_name UK "UUID"
+    bigint file_size
+  }
+  CERTIFICATES {
+    bigint id PK
+    bigint student_id FK
+    bigint skill_id FK
+    varchar name
+    varchar issuer
+    varchar stored_file_name UK "UUID"
+    varchar status "PENDING, VERIFIED, REJECTED"
+    varchar review_note
+  }
+  ASSESSMENT_ATTEMPTS {
+    bigint id PK
+    bigint student_id FK
+    bigint skill_id FK
+    varchar question_ids
+    varchar option_order "kept on the server"
+    int correct "out of 8"
+    int verified_level
+    datetime started_at
+  }
+  INVITATIONS {
+    bigint id PK
+    bigint job_id FK
+    bigint student_id FK
+    varchar message
+    datetime invited_at
+  }

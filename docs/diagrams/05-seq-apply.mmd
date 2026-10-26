@@ -1,0 +1,23 @@
+sequenceDiagram
+  autonumber
+  actor S as Student
+  participant FE as React app
+  participant APS as ApplicationService
+  participant DB as MySQL
+  actor R as Recruiter
+  S->>FE: Click "Apply now"
+  FE->>APS: POST /api/student/applications {jobId}
+  APS->>DB: job open? deadline passed?<br/>resume uploaded? already applied?
+  alt a rule fails
+    APS-->>FE: 400 or 409 with the reason
+  else all rules pass
+    APS->>DB: INSERT application (unique job_id + student_id)
+    APS-->>FE: 201 status APPLIED
+  end
+  R->>APS: GET /api/recruiter/jobs/{id}/applicants
+  APS->>DB: check the recruiter posted this job
+  APS-->>R: applicants ranked by match score, with reasons
+  R->>APS: PATCH /applications/{id}/status SHORTLISTED + note
+  APS->>DB: check ownership, update status and note
+  S->>FE: Open My Applications
+  FE-->>S: "Shortlisted" + recruiter note

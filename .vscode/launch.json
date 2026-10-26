@@ -1,0 +1,31 @@
+{
+  // Run and Debug panel (Cmd+Shift+D).
+  // "Debug backend" runs Spring Boot with breakpoints. Start the frontend task first
+  // (Terminal > Run Task > Frontend), then "Open web app in Chrome" to debug the React code.
+  // To use the AI Copilot while debugging, start VS Code from Terminal with `code .`
+  // so it inherits GEMINI_API_KEY from your shell.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug backend",
+      "request": "launch",
+      "mainClass": "com.careersphere.CareerSphereApplication",
+      "projectName": "careersphere-backend",
+      "cwd": "${workspaceFolder}/backend"
+    },
+    {
+      "type": "chrome",
+      "name": "Open web app in Chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug backend + web app",
+      "configurations": ["Debug backend", "Open web app in Chrome"]
+    }
+  ]
+}

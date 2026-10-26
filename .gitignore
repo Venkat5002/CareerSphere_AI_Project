@@ -1,0 +1,32 @@
+# Backend
+backend/target/
+backend/uploads/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# OS / IDE
+.DS_Store
+.idea/
+*.iml
+
+
+# Xcode
+*.xcodeproj/**/xcuserdata/
+build/
+
+# Android Studio
+android/.gradle/
+android/.idea/
+android/local.properties
+android/build/
+android/app/build/
+*.apk
+
+# Secrets and local data
+.env
+*.env
+uploads/
+*.log

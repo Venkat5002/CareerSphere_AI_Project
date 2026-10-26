@@ -1,0 +1,28 @@
+sequenceDiagram
+  autonumber
+  actor U as User
+  participant FE as React app
+  participant SEC as JWT filter
+  participant AC as AuthController
+  participant AS as AuthService
+  participant DB as MySQL
+  U->>FE: Email + password
+  FE->>AC: POST /api/auth/login
+  AC->>AS: login()
+  AS->>DB: find user by email
+  DB-->>AS: user + BCrypt hash
+  AS->>AS: BCrypt matches(password, hash)
+  alt wrong email or password
+    AS-->>FE: 401 "Invalid email or password."
+  else correct
+    AS-->>FE: JWT (user id + role, 8 h) + user
+    FE->>FE: store token, open home page for the role
+  end
+  Note over FE,SEC: Every later request
+  FE->>SEC: GET /api/student/... with Authorization: Bearer token
+  SEC->>SEC: verify signature and expiry, load user, set role
+  alt role allowed for this path
+    SEC->>AC: continue to the controller
+  else wrong role
+    SEC-->>FE: 403 "Your account role cannot access this."
+  end

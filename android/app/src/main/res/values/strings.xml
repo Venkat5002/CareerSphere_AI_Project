@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CareerSphere</string>
+    <string name="connecting">Connecting to CareerSphere…</string>
+    <string name="server_label">Server address</string>
+    <string name="connect">Connect</string>
+    <string name="no_viewer">No app on this phone can open this file.</string>
+</resources>

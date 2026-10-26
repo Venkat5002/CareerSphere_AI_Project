@@ -1,0 +1,21 @@
+sequenceDiagram
+  autonumber
+  actor S as Student
+  participant UI as React (Skill roadmap)
+  participant API as StudentController
+  participant RS as RoadmapService
+  participant MS as MatchService
+  participant DB as MySQL
+  S->>UI: Open Skill roadmap
+  UI->>API: GET /api/student/roadmap (JWT)
+  API->>RS: forStudent(id)
+  RS->>DB: profile levels, CGPA, open jobs
+  RS->>RS: candidate actions (skill, target level)
+  loop every bundle of 1, 2, 3 actions (about 1,000)
+    RS->>MS: reachable(levels + bundle, job) for each job
+  end
+  RS->>RS: best bundle per size, least effort, "works together" flag
+  RS->>RS: cheapest path to each nearby job, CGPA blocker
+  RS-->>UI: bundles, closest jobs, plans checked
+  S->>UI: Show on my map
+  UI->>UI: Career Map with the bundle switched on (what-if)

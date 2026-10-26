@@ -1,0 +1,1397 @@
+[
+ {
+  "skill": "Java",
+  "questions": [
+   {
+    "id": "java-1",
+    "level": 1,
+    "question": "Which keyword makes a class impossible to extend?",
+    "options": [
+     "final",
+     "static",
+     "private",
+     "abstract"
+    ]
+   },
+   {
+    "id": "java-2",
+    "level": 1,
+    "question": "What is the default value of an int field in a Java object?",
+    "options": [
+     "0",
+     "null",
+     "-1",
+     "It has no default"
+    ]
+   },
+   {
+    "id": "java-3",
+    "level": 1,
+    "question": "Which collection keeps elements unique and has no index?",
+    "options": [
+     "HashSet",
+     "ArrayList",
+     "LinkedList",
+     "Array"
+    ]
+   },
+   {
+    "id": "java-4",
+    "level": 1,
+    "question": "What does JVM stand for?",
+    "options": [
+     "Java Virtual Machine",
+     "Java Variable Method",
+     "Joint Virtual Memory",
+     "Java Verified Module"
+    ]
+   },
+   {
+    "id": "java-5",
+    "level": 2,
+    "question": "Two objects are equal by equals(). What must also be true for HashMap to work correctly?",
+    "options": [
+     "Their hashCode() values are equal",
+     "Their toString() values are equal",
+     "They are the same object",
+     "Their classes are final"
+    ]
+   },
+   {
+    "id": "java-6",
+    "level": 2,
+    "question": "Which of these is a checked exception?",
+    "options": [
+     "IOException",
+     "NullPointerException",
+     "ArithmeticException",
+     "IllegalArgumentException"
+    ]
+   },
+   {
+    "id": "java-7",
+    "level": 2,
+    "question": "What does the 'volatile' keyword guarantee for a field?",
+    "options": [
+     "Every thread reads the latest written value",
+     "The field can never change",
+     "Only one thread can write it at a time",
+     "The field is stored off-heap"
+    ]
+   },
+   {
+    "id": "java-8",
+    "level": 2,
+    "question": "In Java 17, what does a 'record' declaration create?",
+    "options": [
+     "An immutable data class with generated equals, hashCode and toString",
+     "A database table",
+     "A mutable class with setters",
+     "An interface with default methods"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Python",
+  "questions": [
+   {
+    "id": "python-1",
+    "level": 1,
+    "question": "Which of these is mutable?",
+    "options": [
+     "list",
+     "tuple",
+     "str",
+     "frozenset"
+    ]
+   },
+   {
+    "id": "python-2",
+    "level": 1,
+    "question": "What does len({'a': 1, 'b': 2}) return?",
+    "options": [
+     "2",
+     "4",
+     "1",
+     "An error"
+    ]
+   },
+   {
+    "id": "python-3",
+    "level": 1,
+    "question": "How do you start a single-line comment in Python?",
+    "options": [
+     "#",
+     "//",
+     "--",
+     "/*"
+    ]
+   },
+   {
+    "id": "python-4",
+    "level": 1,
+    "question": "What is the output of print(7 // 2)?",
+    "options": [
+     "3",
+     "3.5",
+     "4",
+     "3.0"
+    ]
+   },
+   {
+    "id": "python-5",
+    "level": 2,
+    "question": "What does a function containing 'yield' return when called?",
+    "options": [
+     "A generator object",
+     "The first yielded value",
+     "None",
+     "A list of all values"
+    ]
+   },
+   {
+    "id": "python-6",
+    "level": 2,
+    "question": "Why is def f(items=[]) risky?",
+    "options": [
+     "The same list is shared between calls",
+     "Lists can't be default values",
+     "It makes items read-only",
+     "It creates a new list each time, which is slow"
+    ]
+   },
+   {
+    "id": "python-7",
+    "level": 2,
+    "question": "What does the 'with' statement guarantee for a file?",
+    "options": [
+     "It is closed even if an exception happens",
+     "It is opened read-only",
+     "It is loaded into memory",
+     "It is locked against other processes"
+    ]
+   },
+   {
+    "id": "python-8",
+    "level": 2,
+    "question": "Which statement about the GIL in CPython is true?",
+    "options": [
+     "Only one thread runs Python bytecode at a time",
+     "It prevents multiprocessing",
+     "It makes all code thread-safe",
+     "It only exists on Windows"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "SQL",
+  "questions": [
+   {
+    "id": "sql-1",
+    "level": 1,
+    "question": "Which clause filters rows before grouping?",
+    "options": [
+     "WHERE",
+     "HAVING",
+     "ORDER BY",
+     "GROUP BY"
+    ]
+   },
+   {
+    "id": "sql-2",
+    "level": 1,
+    "question": "Which statement removes all rows but keeps the table?",
+    "options": [
+     "DELETE FROM t",
+     "DROP TABLE t",
+     "REMOVE t",
+     "ERASE t"
+    ]
+   },
+   {
+    "id": "sql-3",
+    "level": 1,
+    "question": "What does COUNT(*) count?",
+    "options": [
+     "All rows, including rows with NULLs",
+     "Only non-NULL values",
+     "Distinct values",
+     "Columns"
+    ]
+   },
+   {
+    "id": "sql-4",
+    "level": 1,
+    "question": "Which join returns only rows that match in both tables?",
+    "options": [
+     "INNER JOIN",
+     "LEFT JOIN",
+     "FULL OUTER JOIN",
+     "CROSS JOIN"
+    ]
+   },
+   {
+    "id": "sql-5",
+    "level": 2,
+    "question": "Which clause filters groups after GROUP BY?",
+    "options": [
+     "HAVING",
+     "WHERE",
+     "LIMIT",
+     "ON"
+    ]
+   },
+   {
+    "id": "sql-6",
+    "level": 2,
+    "question": "What does a PRIMARY KEY guarantee?",
+    "options": [
+     "Unique, non-NULL values",
+     "Fast deletes only",
+     "Values sorted on disk",
+     "A foreign key to itself"
+    ]
+   },
+   {
+    "id": "sql-7",
+    "level": 2,
+    "question": "What is the main benefit of an index on a column?",
+    "options": [
+     "Faster lookups on that column",
+     "Smaller table size",
+     "Faster inserts",
+     "Automatic backups"
+    ]
+   },
+   {
+    "id": "sql-8",
+    "level": 2,
+    "question": "Which statement adds a column to an existing table?",
+    "options": [
+     "ALTER TABLE students ADD phone VARCHAR(20)",
+     "UPDATE TABLE students ADD phone",
+     "INSERT COLUMN phone INTO students",
+     "MODIFY students NEW phone"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Git",
+  "questions": [
+   {
+    "id": "git-1",
+    "level": 1,
+    "question": "Which command shows changed files not yet committed?",
+    "options": [
+     "git status",
+     "git log",
+     "git push",
+     "git init"
+    ]
+   },
+   {
+    "id": "git-2",
+    "level": 1,
+    "question": "Which command creates a new branch and switches to it?",
+    "options": [
+     "git checkout -b feature",
+     "git branch -d feature",
+     "git merge feature",
+     "git push feature"
+    ]
+   },
+   {
+    "id": "git-3",
+    "level": 1,
+    "question": "What does git clone do?",
+    "options": [
+     "Copies a remote repository to your computer",
+     "Deletes a branch",
+     "Uploads your commits",
+     "Creates an empty repository"
+    ]
+   },
+   {
+    "id": "git-4",
+    "level": 1,
+    "question": "Which file lists paths Git should not track?",
+    "options": [
+     ".gitignore",
+     ".gitconfig",
+     "README.md",
+     ".gitkeep"
+    ]
+   },
+   {
+    "id": "git-5",
+    "level": 2,
+    "question": "What does git rebase main do on a feature branch?",
+    "options": [
+     "Replays the feature commits on top of main",
+     "Deletes main",
+     "Merges feature into main with a merge commit",
+     "Resets feature to main and loses commits"
+    ]
+   },
+   {
+    "id": "git-6",
+    "level": 2,
+    "question": "Which command undoes a pushed commit safely by adding a new commit?",
+    "options": [
+     "git revert",
+     "git reset --hard",
+     "git commit --amend",
+     "git rm"
+    ]
+   },
+   {
+    "id": "git-7",
+    "level": 2,
+    "question": "What is a 'detached HEAD'?",
+    "options": [
+     "HEAD points at a commit, not a branch",
+     "The repository is corrupted",
+     "The remote is unreachable",
+     "The working tree is empty"
+    ]
+   },
+   {
+    "id": "git-8",
+    "level": 2,
+    "question": "What does git stash do?",
+    "options": [
+     "Saves uncommitted changes and cleans the working tree",
+     "Deletes untracked files",
+     "Pushes to a hidden branch on the server",
+     "Squashes the last commits"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "JavaScript",
+  "questions": [
+   {
+    "id": "javascript-1",
+    "level": 1,
+    "question": "Which keyword declares a variable that cannot be reassigned?",
+    "options": [
+     "const",
+     "let",
+     "var",
+     "static"
+    ]
+   },
+   {
+    "id": "javascript-2",
+    "level": 1,
+    "question": "What does typeof [] return?",
+    "options": [
+     "\"object\"",
+     "\"array\"",
+     "\"list\"",
+     "\"undefined\""
+    ]
+   },
+   {
+    "id": "javascript-3",
+    "level": 1,
+    "question": "What does === compare?",
+    "options": [
+     "Value and type",
+     "Only value",
+     "Only type",
+     "References only for numbers"
+    ]
+   },
+   {
+    "id": "javascript-4",
+    "level": 1,
+    "question": "Which method adds an item to the end of an array?",
+    "options": [
+     "push",
+     "pop",
+     "shift",
+     "slice"
+    ]
+   },
+   {
+    "id": "javascript-5",
+    "level": 2,
+    "question": "What does 'await' do inside an async function?",
+    "options": [
+     "Pauses it until the promise settles",
+     "Blocks the whole browser",
+     "Runs the promise twice",
+     "Converts a value to a string"
+    ]
+   },
+   {
+    "id": "javascript-6",
+    "level": 2,
+    "question": "What is a closure?",
+    "options": [
+     "A function that remembers variables from where it was created",
+     "A function with no parameters",
+     "A way to close a browser tab",
+     "An object with private fields only"
+    ]
+   },
+   {
+    "id": "javascript-7",
+    "level": 2,
+    "question": "In what order do these run: setTimeout(f, 0), a resolved promise's then(g), and synchronous code h?",
+    "options": [
+     "h, g, f",
+     "f, g, h",
+     "g, h, f",
+     "h, f, g"
+    ]
+   },
+   {
+    "id": "javascript-8",
+    "level": 2,
+    "question": "What does Array.prototype.map return?",
+    "options": [
+     "A new array of the callback results",
+     "The original array changed in place",
+     "undefined",
+     "The first matching element"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "HTML",
+  "questions": [
+   {
+    "id": "html-1",
+    "level": 1,
+    "question": "Which tag makes a hyperlink?",
+    "options": [
+     "<a>",
+     "<link>",
+     "<href>",
+     "<url>"
+    ]
+   },
+   {
+    "id": "html-2",
+    "level": 1,
+    "question": "Which attribute gives an image text for screen readers?",
+    "options": [
+     "alt",
+     "title",
+     "src",
+     "name"
+    ]
+   },
+   {
+    "id": "html-3",
+    "level": 1,
+    "question": "Which tag holds the page's main heading?",
+    "options": [
+     "<h1>",
+     "<head>",
+     "<header>",
+     "<title>"
+    ]
+   },
+   {
+    "id": "html-4",
+    "level": 1,
+    "question": "Which element creates a drop-down list?",
+    "options": [
+     "<select>",
+     "<dropdown>",
+     "<list>",
+     "<option-list>"
+    ]
+   },
+   {
+    "id": "html-5",
+    "level": 2,
+    "question": "Why use <button> instead of a clickable <div>?",
+    "options": [
+     "It is focusable and works with the keyboard by default",
+     "It loads faster",
+     "It cannot be styled",
+     "It submits nothing"
+    ]
+   },
+   {
+    "id": "html-6",
+    "level": 2,
+    "question": "What does the 'defer' attribute on a <script> do?",
+    "options": [
+     "Runs the script after the HTML is parsed",
+     "Skips the script on mobile",
+     "Runs it before the page starts parsing",
+     "Loads it only on click"
+    ]
+   },
+   {
+    "id": "html-7",
+    "level": 2,
+    "question": "Which element is right for the page's primary content?",
+    "options": [
+     "<main>",
+     "<section>",
+     "<div id=\"main\">",
+     "<article> for every page"
+    ]
+   },
+   {
+    "id": "html-8",
+    "level": 2,
+    "question": "What does <label for=\"email\"> do?",
+    "options": [
+     "Links the label to the input with id 'email'",
+     "Validates the email",
+     "Sets a placeholder",
+     "Makes the field required"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "CSS",
+  "questions": [
+   {
+    "id": "css-1",
+    "level": 1,
+    "question": "Which property changes the text color?",
+    "options": [
+     "color",
+     "font-color",
+     "text-color",
+     "foreground"
+    ]
+   },
+   {
+    "id": "css-2",
+    "level": 1,
+    "question": "Which selector targets an element with id 'nav'?",
+    "options": [
+     "#nav",
+     ".nav",
+     "nav",
+     "*nav"
+    ]
+   },
+   {
+    "id": "css-3",
+    "level": 1,
+    "question": "Which property adds space inside an element's border?",
+    "options": [
+     "padding",
+     "margin",
+     "gap",
+     "spacing"
+    ]
+   },
+   {
+    "id": "css-4",
+    "level": 1,
+    "question": "Which display value lays children out in a row by default?",
+    "options": [
+     "flex",
+     "block",
+     "none",
+     "table-caption"
+    ]
+   },
+   {
+    "id": "css-5",
+    "level": 2,
+    "question": "Which selector has the highest specificity?",
+    "options": [
+     "#main .item",
+     "div .item",
+     "div p",
+     "*"
+    ]
+   },
+   {
+    "id": "css-6",
+    "level": 2,
+    "question": "What does 'position: sticky' do?",
+    "options": [
+     "Acts relative until a scroll threshold, then sticks",
+     "Removes the element from layout",
+     "Fixes it to the viewport always",
+     "Centers it"
+    ]
+   },
+   {
+    "id": "css-7",
+    "level": 2,
+    "question": "In CSS Grid, what does 'grid-template-columns: repeat(3, 1fr)' create?",
+    "options": [
+     "Three equal-width columns",
+     "Three rows",
+     "One column three times wider",
+     "Columns of 3px"
+    ]
+   },
+   {
+    "id": "css-8",
+    "level": 2,
+    "question": "What does 'box-sizing: border-box' change?",
+    "options": [
+     "Width includes padding and border",
+     "Borders are drawn outside the margin",
+     "Margins collapse",
+     "The box becomes a flex container"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "React",
+  "questions": [
+   {
+    "id": "react-1",
+    "level": 1,
+    "question": "Which hook stores a value that re-renders the component when it changes?",
+    "options": [
+     "useState",
+     "useRef",
+     "useMemo",
+     "useId"
+    ]
+   },
+   {
+    "id": "react-2",
+    "level": 1,
+    "question": "What must a list of elements have so React can track them?",
+    "options": [
+     "A unique key prop on each item",
+     "An id attribute",
+     "A ref",
+     "A class name"
+    ]
+   },
+   {
+    "id": "react-3",
+    "level": 1,
+    "question": "How do you pass data from a parent to a child component?",
+    "options": [
+     "Props",
+     "State",
+     "Context only",
+     "Global variables"
+    ]
+   },
+   {
+    "id": "react-4",
+    "level": 1,
+    "question": "What does JSX compile into?",
+    "options": [
+     "Function calls that create elements",
+     "HTML files",
+     "CSS",
+     "Web components"
+    ]
+   },
+   {
+    "id": "react-5",
+    "level": 2,
+    "question": "When does useEffect(fn, []) run?",
+    "options": [
+     "Once after the first render",
+     "Before every render",
+     "On every state change",
+     "Never"
+    ]
+   },
+   {
+    "id": "react-6",
+    "level": 2,
+    "question": "Why should you not change state directly, e.g. state.items.push(x)?",
+    "options": [
+     "React may not detect the change and re-render",
+     "It throws an error",
+     "State is read-only in the browser",
+     "It deletes the state"
+    ]
+   },
+   {
+    "id": "react-7",
+    "level": 2,
+    "question": "What does useMemo do?",
+    "options": [
+     "Caches a computed value until its dependencies change",
+     "Stores data in localStorage",
+     "Creates a ref to a DOM node",
+     "Fetches data"
+    ]
+   },
+   {
+    "id": "react-8",
+    "level": 2,
+    "question": "What problem does React Context solve?",
+    "options": [
+     "Passing data deeply without threading props through every level",
+     "Styling components",
+     "Routing between pages",
+     "Server-side rendering"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Spring Boot",
+  "questions": [
+   {
+    "id": "spring-boot-1",
+    "level": 1,
+    "question": "Which annotation marks a class whose methods answer HTTP requests with JSON?",
+    "options": [
+     "@RestController",
+     "@Entity",
+     "@Repository",
+     "@Configuration"
+    ]
+   },
+   {
+    "id": "spring-boot-2",
+    "level": 1,
+    "question": "Where do you usually set the server port?",
+    "options": [
+     "application.properties",
+     "pom.xml",
+     "index.html",
+     "web.xml only"
+    ]
+   },
+   {
+    "id": "spring-boot-3",
+    "level": 1,
+    "question": "Which annotation maps a GET request to a method?",
+    "options": [
+     "@GetMapping",
+     "@PostMapping",
+     "@Get",
+     "@RequestBody"
+    ]
+   },
+   {
+    "id": "spring-boot-4",
+    "level": 1,
+    "question": "What does @Autowired or constructor injection provide?",
+    "options": [
+     "Spring supplies the dependency for you",
+     "A new thread",
+     "A database table",
+     "A REST endpoint"
+    ]
+   },
+   {
+    "id": "spring-boot-5",
+    "level": 2,
+    "question": "What does @Transactional on a service method do?",
+    "options": [
+     "Runs the method in one database transaction, rolled back on runtime exceptions",
+     "Caches the result",
+     "Makes it asynchronous",
+     "Logs every call"
+    ]
+   },
+   {
+    "id": "spring-boot-6",
+    "level": 2,
+    "question": "Which interface gives you CRUD methods for an entity without writing SQL?",
+    "options": [
+     "JpaRepository",
+     "Serializable",
+     "Runnable",
+     "Comparable"
+    ]
+   },
+   {
+    "id": "spring-boot-7",
+    "level": 2,
+    "question": "What does @Valid on a @RequestBody parameter trigger?",
+    "options": [
+     "Bean Validation of the request object",
+     "Authentication",
+     "JSON pretty-printing",
+     "A database lookup"
+    ]
+   },
+   {
+    "id": "spring-boot-8",
+    "level": 2,
+    "question": "What is a Spring Boot 'starter'?",
+    "options": [
+     "A dependency bundle that brings a feature and its auto-configuration",
+     "A main method",
+     "A Docker image",
+     "A test runner"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Data Structures",
+  "questions": [
+   {
+    "id": "data-structures-1",
+    "level": 1,
+    "question": "Which structure is last in, first out?",
+    "options": [
+     "Stack",
+     "Queue",
+     "Heap",
+     "Tree"
+    ]
+   },
+   {
+    "id": "data-structures-2",
+    "level": 1,
+    "question": "What is the time to access an array element by index?",
+    "options": [
+     "O(1)",
+     "O(n)",
+     "O(log n)",
+     "O(n log n)"
+    ]
+   },
+   {
+    "id": "data-structures-3",
+    "level": 1,
+    "question": "Which structure is first in, first out?",
+    "options": [
+     "Queue",
+     "Stack",
+     "Set",
+     "Graph"
+    ]
+   },
+   {
+    "id": "data-structures-4",
+    "level": 1,
+    "question": "In a binary tree, how many children can a node have at most?",
+    "options": [
+     "2",
+     "1",
+     "3",
+     "Any number"
+    ]
+   },
+   {
+    "id": "data-structures-5",
+    "level": 2,
+    "question": "What is the average lookup time in a hash table?",
+    "options": [
+     "O(1)",
+     "O(n)",
+     "O(log n)",
+     "O(n²)"
+    ]
+   },
+   {
+    "id": "data-structures-6",
+    "level": 2,
+    "question": "What is the time complexity of binary search on a sorted array?",
+    "options": [
+     "O(log n)",
+     "O(n)",
+     "O(1)",
+     "O(n log n)"
+    ]
+   },
+   {
+    "id": "data-structures-7",
+    "level": 2,
+    "question": "Which traversal of a binary search tree gives sorted order?",
+    "options": [
+     "In-order",
+     "Pre-order",
+     "Post-order",
+     "Level-order"
+    ]
+   },
+   {
+    "id": "data-structures-8",
+    "level": 2,
+    "question": "Which structure gives the smallest element in O(1) and insertion in O(log n)?",
+    "options": [
+     "Min-heap",
+     "Linked list",
+     "Stack",
+     "Unsorted array"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "REST APIs",
+  "questions": [
+   {
+    "id": "rest-apis-1",
+    "level": 1,
+    "question": "Which HTTP method is normally used to create a resource?",
+    "options": [
+     "POST",
+     "GET",
+     "DELETE",
+     "HEAD"
+    ]
+   },
+   {
+    "id": "rest-apis-2",
+    "level": 1,
+    "question": "What does status code 404 mean?",
+    "options": [
+     "Not found",
+     "Server error",
+     "Created",
+     "Unauthorized"
+    ]
+   },
+   {
+    "id": "rest-apis-3",
+    "level": 1,
+    "question": "Which format do most REST APIs use for bodies today?",
+    "options": [
+     "JSON",
+     "CSV",
+     "PDF",
+     "YAML only"
+    ]
+   },
+   {
+    "id": "rest-apis-4",
+    "level": 1,
+    "question": "Which method reads a resource without changing it?",
+    "options": [
+     "GET",
+     "PUT",
+     "PATCH",
+     "POST"
+    ]
+   },
+   {
+    "id": "rest-apis-5",
+    "level": 2,
+    "question": "Which status code fits a successful create?",
+    "options": [
+     "201 Created",
+     "200 OK only",
+     "204 No Content",
+     "302 Found"
+    ]
+   },
+   {
+    "id": "rest-apis-6",
+    "level": 2,
+    "question": "Which methods are meant to be idempotent?",
+    "options": [
+     "GET, PUT and DELETE",
+     "POST and PATCH",
+     "Only POST",
+     "None"
+    ]
+   },
+   {
+    "id": "rest-apis-7",
+    "level": 2,
+    "question": "What is the difference between 401 and 403?",
+    "options": [
+     "401: not logged in; 403: logged in but not allowed",
+     "They mean the same",
+     "401: not found; 403: server error",
+     "401 is for GET, 403 for POST"
+    ]
+   },
+   {
+    "id": "rest-apis-8",
+    "level": 2,
+    "question": "Where should a JWT access token normally go in a request?",
+    "options": [
+     "Authorization: Bearer <token> header",
+     "In the URL query string",
+     "In a hidden form field",
+     "In the response body"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Docker",
+  "questions": [
+   {
+    "id": "docker-1",
+    "level": 1,
+    "question": "What is a Docker image?",
+    "options": [
+     "A read-only template used to start containers",
+     "A running process",
+     "A virtual machine",
+     "A cloud account"
+    ]
+   },
+   {
+    "id": "docker-2",
+    "level": 1,
+    "question": "Which file describes how to build an image?",
+    "options": [
+     "Dockerfile",
+     "docker.json",
+     "compose.lock",
+     "image.yml"
+    ]
+   },
+   {
+    "id": "docker-3",
+    "level": 1,
+    "question": "Which command lists running containers?",
+    "options": [
+     "docker ps",
+     "docker images",
+     "docker build",
+     "docker pull"
+    ]
+   },
+   {
+    "id": "docker-4",
+    "level": 1,
+    "question": "What does -p 8080:80 do in docker run?",
+    "options": [
+     "Maps host port 8080 to container port 80",
+     "Limits memory to 8080 MB",
+     "Runs 80 copies",
+     "Sets the process priority"
+    ]
+   },
+   {
+    "id": "docker-5",
+    "level": 2,
+    "question": "Why use a multi-stage build?",
+    "options": [
+     "To keep build tools out of the final, smaller image",
+     "To run several containers",
+     "To speed up the network",
+     "To share volumes"
+    ]
+   },
+   {
+    "id": "docker-6",
+    "level": 2,
+    "question": "What keeps a database's data when its container is deleted?",
+    "options": [
+     "A volume",
+     "The image",
+     "An environment variable",
+     "The Dockerfile"
+    ]
+   },
+   {
+    "id": "docker-7",
+    "level": 2,
+    "question": "What does docker compose up do?",
+    "options": [
+     "Starts all services defined in the compose file",
+     "Builds a single image only",
+     "Uploads images to a registry",
+     "Deletes old containers"
+    ]
+   },
+   {
+    "id": "docker-8",
+    "level": 2,
+    "question": "Why copy package files and install dependencies before copying the source code?",
+    "options": [
+     "Docker caches the dependency layer when only source changes",
+     "It is required by Docker",
+     "It makes the image public",
+     "It avoids using a base image"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Linux",
+  "questions": [
+   {
+    "id": "linux-1",
+    "level": 1,
+    "question": "Which command lists files in a folder?",
+    "options": [
+     "ls",
+     "cd",
+     "pwd",
+     "cat"
+    ]
+   },
+   {
+    "id": "linux-2",
+    "level": 1,
+    "question": "Which command shows the current folder?",
+    "options": [
+     "pwd",
+     "whoami",
+     "ls -a",
+     "dir -p"
+    ]
+   },
+   {
+    "id": "linux-3",
+    "level": 1,
+    "question": "What does sudo do?",
+    "options": [
+     "Runs a command as another user, usually root",
+     "Shuts down the system",
+     "Shows disk usage",
+     "Updates the kernel"
+    ]
+   },
+   {
+    "id": "linux-4",
+    "level": 1,
+    "question": "Which command shows a file's contents?",
+    "options": [
+     "cat",
+     "mv",
+     "rm",
+     "chmod"
+    ]
+   },
+   {
+    "id": "linux-5",
+    "level": 2,
+    "question": "What does chmod 755 script.sh give?",
+    "options": [
+     "Owner read/write/execute; group and others read/execute",
+     "Everyone full access",
+     "Only the owner can read",
+     "No one can execute"
+    ]
+   },
+   {
+    "id": "linux-6",
+    "level": 2,
+    "question": "What does the | (pipe) do?",
+    "options": [
+     "Sends one command's output to the next command's input",
+     "Runs commands in parallel",
+     "Writes to a file",
+     "Comments out a line"
+    ]
+   },
+   {
+    "id": "linux-7",
+    "level": 2,
+    "question": "Which command finds which process is using a port?",
+    "options": [
+     "lsof -i :8080",
+     "ps -port 8080",
+     "netstat --kill 8080",
+     "top 8080"
+    ]
+   },
+   {
+    "id": "linux-8",
+    "level": 2,
+    "question": "What does 'grep -r TODO .' do?",
+    "options": [
+     "Searches every file under the current folder for TODO",
+     "Deletes TODO files",
+     "Renames files",
+     "Counts lines"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Machine Learning",
+  "questions": [
+   {
+    "id": "machine-learning-1",
+    "level": 1,
+    "question": "Predicting a house price is which kind of task?",
+    "options": [
+     "Regression",
+     "Classification",
+     "Clustering",
+     "Dimensionality reduction"
+    ]
+   },
+   {
+    "id": "machine-learning-2",
+    "level": 1,
+    "question": "What is a training set used for?",
+    "options": [
+     "Fitting the model's parameters",
+     "Final reporting only",
+     "Deploying the model",
+     "Labeling data"
+    ]
+   },
+   {
+    "id": "machine-learning-3",
+    "level": 1,
+    "question": "Which is an unsupervised method?",
+    "options": [
+     "K-means clustering",
+     "Linear regression",
+     "Logistic regression",
+     "Decision tree classifier"
+    ]
+   },
+   {
+    "id": "machine-learning-4",
+    "level": 1,
+    "question": "What is a 'feature'?",
+    "options": [
+     "An input variable the model uses",
+     "The predicted value",
+     "The error",
+     "The learning rate"
+    ]
+   },
+   {
+    "id": "machine-learning-5",
+    "level": 2,
+    "question": "A model is 99% accurate on training data and 60% on test data. What is likely wrong?",
+    "options": [
+     "Overfitting",
+     "Underfitting",
+     "Too little training",
+     "The test set is too large"
+    ]
+   },
+   {
+    "id": "machine-learning-6",
+    "level": 2,
+    "question": "Why can accuracy mislead on imbalanced data?",
+    "options": [
+     "Predicting the majority class alone scores high",
+     "Accuracy ignores the training set",
+     "Accuracy is always below 50%",
+     "It only works for regression"
+    ]
+   },
+   {
+    "id": "machine-learning-7",
+    "level": 2,
+    "question": "What does cross-validation estimate?",
+    "options": [
+     "How well the model generalizes to unseen data",
+     "The training time",
+     "The number of features",
+     "The best random seed"
+    ]
+   },
+   {
+    "id": "machine-learning-8",
+    "level": 2,
+    "question": "What does regularization (L1/L2) do?",
+    "options": [
+     "Penalizes large weights to reduce overfitting",
+     "Speeds up data loading",
+     "Normalizes the labels",
+     "Adds more training data"
+    ]
+   }
+  ]
+ },
+ {
+  "skill": "Excel",
+  "questions": [
+   {
+    "id": "excel-1",
+    "level": 1,
+    "question": "Which function adds a range of numbers?",
+    "options": [
+     "SUM",
+     "ADD",
+     "TOTAL",
+     "PLUS"
+    ]
+   },
+   {
+    "id": "excel-2",
+    "level": 1,
+    "question": "What does $A$1 mean in a formula?",
+    "options": [
+     "An absolute reference that doesn't change when copied",
+     "A currency value",
+     "A hidden cell",
+     "A named range"
+    ]
+   },
+   {
+    "id": "excel-3",
+    "level": 1,
+    "question": "Which function gives the average of a range?",
+    "options": [
+     "AVERAGE",
+     "MEAN",
+     "MEDIAN",
+     "AVG"
+    ]
+   },
+   {
+    "id": "excel-4",
+    "level": 1,
+    "question": "Which feature keeps the header row visible while scrolling?",
+    "options": [
+     "Freeze Panes",
+     "Wrap Text",
+     "Merge Cells",
+     "Group"
+    ]
+   },
+   {
+    "id": "excel-5",
+    "level": 2,
+    "question": "What does VLOOKUP(x, A:C, 3, FALSE) return?",
+    "options": [
+     "The value in column C of the row where column A exactly equals x",
+     "The third match of x",
+     "The sum of column C",
+     "Column 3 of the first row"
+    ]
+   },
+   {
+    "id": "excel-6",
+    "level": 2,
+    "question": "Which tool summarizes thousands of rows by category with drag and drop?",
+    "options": [
+     "PivotTable",
+     "Conditional formatting",
+     "Flash Fill",
+     "Data validation"
+    ]
+   },
+   {
+    "id": "excel-7",
+    "level": 2,
+    "question": "What does COUNTIF(B:B, \">=70\") count?",
+    "options": [
+     "Cells in column B with values of 70 or more",
+     "All cells in column B",
+     "Cells equal to the text '>=70'",
+     "Rows where B is blank"
+    ]
+   },
+   {
+    "id": "excel-8",
+    "level": 2,
+    "question": "Which function is the more flexible successor to VLOOKUP?",
+    "options": [
+     "XLOOKUP",
+     "HLOOKUP",
+     "LOOKUPV",
+     "FINDROW"
+    ]
+   }
+  ]
+ }
+]

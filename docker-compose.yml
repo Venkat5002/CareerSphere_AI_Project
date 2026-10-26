@@ -1,0 +1,40 @@
+# Runs CareerSphere AI and MySQL together on your own computer:
+#   docker compose up --build
+# then open http://localhost:8080  (demo logins are in README.md)
+# Stop with Ctrl+C; add -v to "docker compose down -v" to delete the data.
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: careersphere
+      MYSQL_USER: careersphere
+      MYSQL_PASSWORD: careersphere
+      MYSQL_ROOT_PASSWORD: careersphere-root
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pcareersphere-root"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://db:3306/careersphere?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+      DB_USERNAME: careersphere
+      DB_PASSWORD: careersphere
+      JWT_SECRET: ${JWT_SECRET:-local-docker-secret-change-me-0123456789abcdef}
+      # Optional: export GEMINI_API_KEY in your shell first to turn on the AI Copilot.
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    volumes:
+      - uploads:/data   # résumés, certificates and videos
+
+volumes:
+  db-data:
+  uploads:
