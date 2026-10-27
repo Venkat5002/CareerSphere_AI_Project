@@ -1,0 +1,11 @@
+flowchart LR
+  A["Inputs<br/>student profiles, skill levels,<br/>résumés, certificates,<br/>jobs with requirements"] --> B["Verification<br/>assessments graded on the server,<br/>certificates checked by the cell"]
+  B --> C["Match rule<br/>weighted, level-aware score;<br/>within reach = 70% + CGPA"]
+  C --> D["Student decisions<br/>Career Map, Opportunity Math,<br/>Skill Roadmap"]
+  C --> E["Recruiter decisions<br/>ranked applicants,<br/>Hidden Talent"]
+  C --> F["Placement-cell decisions<br/>analytics, Workshop Planner"]
+  C --> G["Grounded AI<br/>Copilot tools, evidence-checked<br/>résumé finder"]
+  D --> H["Evaluation<br/>demo batch vs baselines,<br/>39 unit + 17 API tests"]
+  E --> H
+  F --> H
+  G --> H

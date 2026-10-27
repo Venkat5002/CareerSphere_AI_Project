@@ -1,0 +1,84 @@
+classDiagram
+  direction TB
+  class User {
+    Long id
+    String fullName
+    String email
+    String passwordHash
+    Role role
+  }
+  class StudentProfile {
+    Double cgpa
+    String branch
+    boolean placementConsent
+    Map skillLevels
+    Map verifiedLevels
+    levelOf()
+    levels()
+  }
+  class Job {
+    String title
+    Double minCgpa
+    JobStatus status
+    Map minLevels
+    Set niceToHave
+    minLevelOf()
+  }
+  class Skill {
+    Long id
+    String name
+    String category
+  }
+  class Application {
+    ApplicationStatus status
+    LocalDateTime appliedAt
+  }
+  class Certificate {
+    String name
+    String issuer
+    CertificateStatus status
+  }
+  class AssessmentAttempt {
+    String questionIds
+    String optionOrder
+    Integer correct
+    Integer verifiedLevel
+  }
+  class Invitation {
+    String message
+    LocalDateTime invitedAt
+  }
+  class MatchService {
+    score(levels, job) int
+    reachable(levels, cgpa, job) bool
+    opportunities() List
+  }
+  class RoadmapService {
+    plan(levels, cgpa, open) RoadmapDto
+    candidateActions()
+    combinations()
+  }
+  class TalentService {
+    find(job, profiles) TalentDto
+    invite()
+  }
+  class WorkshopService {
+    plan(rounds, goal) WorkshopPlan
+  }
+  class CopilotService {
+    ask(studentId, messages) Answer
+  }
+  User "1" -- "0..1" StudentProfile
+  StudentProfile "*" -- "*" Skill : levels
+  Job "*" -- "*" Skill : requires
+  User "1" -- "*" Job : posts
+  Application "*" --> "1" Job
+  Application "*" --> "1" User
+  Invitation "*" --> "1" Job
+  Certificate "*" --> "1" Skill
+  AssessmentAttempt "*" --> "1" Skill
+  RoadmapService ..> MatchService
+  TalentService ..> MatchService
+  TalentService ..> RoadmapService
+  WorkshopService ..> MatchService
+  CopilotService ..> MatchService

@@ -1,0 +1,16 @@
+flowchart LR
+  subgraph Dev["Student's Mac (development and demo)"]
+    BR["Browser / Mac app (Xcode)<br/>React web app on :5173 (Vite)"]
+    API["Spring Boot backend<br/>Java 17 on :8080"]
+    DB[("MySQL 8 on :3306<br/>database careersphere")]
+    FS[("backend/uploads/<br/>résumés, certificates, videos")]
+    BR -- "HTTP /api + JWT" --> API
+    API -- "JDBC" --> DB
+    API --> FS
+  end
+  AND["Android emulator<br/>WebView → 10.0.2.2:5173"] --> BR
+  API -- "HTTPS, server-side key" --> GEM["Google Gemini API"]
+  Dev -- "git push → deploy" --> Cloud
+  subgraph Cloud["Online (Railway)"]
+    IMG["One Docker image<br/>web app inside the backend jar"] --> CDB[("Managed MySQL")]
+  end

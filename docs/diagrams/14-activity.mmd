@@ -1,0 +1,12 @@
+flowchart TB
+  st((Start)) --> a1["Student logs in"]
+  a1 --> d1{"Résumé uploaded?"}
+  d1 -- no --> a2["Upload résumé;<br/>confirm suggested skills"] --> d2
+  d1 -- yes --> d2{"Placement consent<br/>given?"}
+  d2 -- no --> a3["Give consent"] --> a4
+  d2 -- yes --> a4["Take assessment or<br/>upload certificate"]
+  a4 --> a5["Verified level saved;<br/>all jobs re-scored"]
+  a5 --> d3{"Any job within<br/>reach (≥ 70% + CGPA)?"}
+  d3 -- yes --> a6["Apply"] --> a8["Recruiter reviews ranked<br/>applicants; updates status"]
+  d3 -- no --> a7["Follow Skill Roadmap /<br/>attend planned workshop"] --> a4
+  a8 --> en((End))
