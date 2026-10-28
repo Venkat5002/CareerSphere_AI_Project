@@ -1,0 +1,29 @@
+sequenceDiagram
+  autonumber
+  actor S as Student
+  participant UI as React web app
+  participant SEC as Spring Security (JWT)
+  participant API as REST controllers
+  participant MS as Rule engine
+  participant DB as MySQL
+  actor R as Recruiter
+  S->>UI: Log in
+  UI->>SEC: POST /api/auth/login
+  SEC-->>UI: signed token (8 h, role STUDENT)
+  S->>UI: Open Career Map / Skill roadmap
+  UI->>API: GET /api/student/roadmap (Bearer token)
+  API->>MS: plan(levels, CGPA, open jobs)
+  MS->>DB: load profile, skill levels, jobs
+  MS-->>API: scores, best 1-3 step bundles
+  API-->>UI: JSON shown on the map
+  S->>UI: Apply to a job within reach
+  UI->>API: POST /api/student/applications
+  API->>DB: check résumé, consent, CGPA, then save (unique job, student)
+  API-->>UI: Applied
+  R->>UI: Open ranked applicants
+  UI->>API: GET /api/recruiter/jobs/{id}/applicants
+  API->>MS: score each applicant
+  API-->>UI: ranked list with reasons
+  R->>UI: Update status (e.g. Shortlisted)
+  UI->>API: PATCH /api/recruiter/applications/{id}/status
+  API->>DB: save status, student sees it

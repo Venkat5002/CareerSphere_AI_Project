@@ -1,4 +1,5 @@
 erDiagram
+  direction LR
   USERS ||--o| STUDENT_PROFILES : "has (students)"
   USERS ||--o| RECRUITER_PROFILES : "has (recruiters)"
   USERS ||--o| RESUMES : uploads
@@ -9,8 +10,8 @@ erDiagram
   USERS ||--o{ INVITATIONS : "receives (students)"
   JOBS ||--o{ APPLICATIONS : receives
   JOBS ||--o{ INVITATIONS : "sends (Hidden Talent)"
-  STUDENT_PROFILES }o--o{ SKILLS : "student_skills (level 1-3, verified level)"
-  JOBS }o--o{ SKILLS : "job_skills (min level, must-have or nice)"
+  STUDENT_PROFILES }o--o{ SKILLS : "student_skills"
+  JOBS }o--o{ SKILLS : "job_skills"
   SKILLS ||--o{ CERTIFICATES : proves
   SKILLS ||--o{ ASSESSMENT_ATTEMPTS : tests
 
